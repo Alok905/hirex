@@ -27,6 +27,10 @@ public class Resume {
     @Column(nullable = false)
     String fileUrl;
 
+    Long fileSize;
+
+    String fileType;
+
     /**
      * we'll parse the resume with AI and will keep the response like this;
      * <resume>
@@ -53,7 +57,9 @@ public class Resume {
      * </resume>
      */
     @Column(nullable = false)
-    boolean parsed;
+    String parseStatus;
+
+    String embeddingId;
 
     @CreationTimestamp
     Instant uploadedAt;

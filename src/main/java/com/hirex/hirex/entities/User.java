@@ -39,6 +39,18 @@ public class User {
     @Enumerated(EnumType.STRING)
     Role role;
 
+    String profileImageUrl;
+
+    @Column(nullable = false)
+    @Builder.Default
+    boolean isActive = true;
+
+    @Column(nullable = false)
+    @Builder.Default
+    boolean emailVerified = false;
+
+    Instant lastLoginAt;
+
     @CreationTimestamp
     Instant createdAt;
 

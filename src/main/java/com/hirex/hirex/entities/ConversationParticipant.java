@@ -1,6 +1,5 @@
 package com.hirex.hirex.entities;
 
-import com.hirex.hirex.enums.CompanyMemberRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,9 +8,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 
 @Table(
-        name = "company_members",
+        name = "conversation_participants",
         uniqueConstraints = @UniqueConstraint(
-                columnNames = {"company_id", "user_id"}
+                columnNames = {"conversation_id", "user_id"}
         )
 )
 @Entity
@@ -21,31 +20,20 @@ import java.time.Instant;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CompanyMember {
+public class ConversationParticipant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "company_id", nullable = false)
-    Company company;
+    @JoinColumn(name = "conversation_id", nullable = false)
+    Conversation conversation;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     User user;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    CompanyMemberRole memberRole;
-
-    @Column(nullable = false)
-    @Builder.Default
-    String status = "active";
-
     @CreationTimestamp
     Instant joinedAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "invited_by")
-    User invitedBy;
 }

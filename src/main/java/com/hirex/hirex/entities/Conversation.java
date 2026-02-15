@@ -1,14 +1,14 @@
 package com.hirex.hirex.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
-@Table(name = "user_sessions")
+@Table(name = "conversations")
 @Entity
 @Getter
 @Setter
@@ -16,35 +16,22 @@ import java.time.Instant;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserSession {
+public class Conversation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
-
-    @NotBlank
-    String refreshToken;
-
-    String deviceName;
-
-    String ipAddress;
-
-    String userAgent;
-
-    @Column(nullable = false)
-    Instant expiresAt;
-
-    @Column(nullable = false)
-    @Builder.Default
-    boolean revoked = false;
-
-    Instant lastUsedAt;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "created_by", nullable = false)
+    User createdBy;
 
     @CreationTimestamp
     Instant createdAt;
-}
 
+    @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL)
+    List<ConversationParticipant> participants;
+
+    @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL)
+    List<Message> messages;
+}

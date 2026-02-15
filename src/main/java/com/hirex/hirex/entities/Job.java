@@ -4,6 +4,9 @@ import com.hirex.hirex.enums.JobStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @Table(name = "jobs")
 @Entity
@@ -35,4 +38,19 @@ public class Job {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     JobStatus status;
+
+    String location;
+
+    String employmentType;
+
+    Long salaryMin;
+
+    Long salaryMax;
+
+    String currency;
+
+    @CreationTimestamp
+    Instant postedAt;
+
+    Instant expiresAt;
 }

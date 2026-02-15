@@ -3,6 +3,7 @@ package com.hirex.hirex.entities;
 import com.hirex.hirex.enums.InterviewerType;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Table(
         name = "interviewers",
@@ -19,10 +20,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Interviewer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "interview_id")
@@ -36,4 +38,8 @@ public class Interviewer {
     @JoinColumn(name = "human_interviewer_id")
     User interviewer; /// only if interviewType == AI; interviewer must be an employee
 
+    String role;
+
+    @Column(columnDefinition = "TEXT")
+    String aiConfigJson;
 }

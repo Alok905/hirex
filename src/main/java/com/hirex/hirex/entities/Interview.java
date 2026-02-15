@@ -31,6 +31,16 @@ public class Interview {
     @Column(nullable = false)
     Integer duration;
 
+    String status;
+
+    String interviewType;
+
+    String meetingLink;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by")
+    User createdBy;
+
     @OneToMany(mappedBy = "interview")
     List<Interviewer> interviewers;
 }
