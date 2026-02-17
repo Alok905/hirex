@@ -1,4 +1,4 @@
-package com.hirex.hirex.entities;
+package com.hirex.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

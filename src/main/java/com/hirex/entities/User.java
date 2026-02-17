@@ -1,6 +1,6 @@
-package com.hirex.hirex.entities;
+package com.hirex.entities;
 
-import com.hirex.hirex.enums.Role;
+import com.hirex.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.util.List;
 
 @Table(name = "users")
 @Entity

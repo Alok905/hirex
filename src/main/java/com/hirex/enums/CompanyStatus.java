@@ -1,4 +1,4 @@
-package com.hirex.hirex.enums;
+package com.hirex.enums;
 
 public enum CompanyStatus {
     ACTIVE,

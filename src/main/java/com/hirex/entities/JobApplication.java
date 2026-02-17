@@ -1,6 +1,6 @@
-package com.hirex.hirex.entities;
+package com.hirex.entities;
 
-import com.hirex.hirex.enums.ApplicationStatus;
+import com.hirex.enums.ApplicationStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
