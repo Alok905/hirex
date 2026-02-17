@@ -1,6 +1,6 @@
-package com.hirex.hirex.entities;
+package com.hirex.entities;
 
-import com.hirex.hirex.enums.InterviewerType;
+import com.hirex.enums.InterviewerType;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,11 +1,13 @@
-package com.hirex.hirex.entities;
+package com.hirex.entities;
 
-import com.hirex.hirex.enums.CompanyStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Table(name = "companies")
+import java.time.Instant;
+import java.util.List;
+
+@Table(name = "interviews")
 @Entity
 @Getter
 @Setter
@@ -13,19 +15,22 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Company {
 
+public class Interview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, unique = true)
-    String name;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    CompanyStatus status;
+    @OneToOne
+    @JoinColumn(name = "job_application_id")
+    JobApplication jobApplication;
 
     @Column(nullable = false)
-    String description;
+    Instant startTime;
+
+    @Column(nullable = false)
+    Integer duration;
+
+    @OneToMany(mappedBy = "interview")
+    List<Interviewer> interviewers;
 }
