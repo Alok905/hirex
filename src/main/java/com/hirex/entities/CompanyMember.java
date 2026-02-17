@@ -1,6 +1,6 @@
 package com.hirex.entities;
 
-import com.hirex.enums.CompanyMemberRole;
+import com.hirex.enums.roles.CompanyRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -36,7 +36,7 @@ public class CompanyMember {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    CompanyMemberRole memberRole;
+    CompanyRole memberRole;
 
     @Column(nullable = false)
     @Builder.Default

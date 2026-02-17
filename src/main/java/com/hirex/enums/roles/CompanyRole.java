@@ -1,18 +1,13 @@
-package com.hirex.enums;
+package com.hirex.enums.roles;
 
+import com.hirex.enums.Permission;
 import lombok.Getter;
 
 import java.util.EnumSet;
 import java.util.Set;
 
 @Getter  // for "getPermissions()" method
-public enum Role {
-    /**
-     * Super admin of the entire application.
-     * Gets ALL permissions automatically.
-     */
-    APPLICATION_ADMIN(EnumSet.allOf(Permission.class)),
-
+public enum CompanyRole {
     /**
      * Admin of a specific company only. all these access are specific to the company they belong to
      */
@@ -28,14 +23,16 @@ public enum Role {
 
             Permission.INTERVIEW_SCHEDULE,
             Permission.INTERVIEW_UPDATE,
-            Permission.INTERVIEW_CANCEL
+            Permission.INTERVIEW_CANCEL,
+
+            Permission.USER_COMPANY_ROLE_UPDATE /// specific to company like employee/admin; not user/
     )),
 
-    USER(Set.of());
+    EMPLOYEE(Set.of());
 
     private final Set<Permission> permissions;
 
-    Role(Set<Permission> permissions) {
+    CompanyRole(Set<Permission> permissions) {
         this.permissions = permissions;
     }
 
@@ -43,3 +40,4 @@ public enum Role {
         return permissions;
     }
 }
+

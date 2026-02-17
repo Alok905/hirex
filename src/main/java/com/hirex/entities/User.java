@@ -1,6 +1,6 @@
 package com.hirex.entities;
 
-import com.hirex.enums.Role;
+import com.hirex.enums.roles.AppRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -36,7 +36,7 @@ public class User {
     String password;
 
     @Enumerated(EnumType.STRING)
-    Role role;
+    AppRole role;
 
     String profileImageUrl;
 
@@ -57,6 +57,4 @@ public class User {
     Instant updatedAt;
 
     Instant deletedAt; /// to soft-delete the user
-
 }
-
