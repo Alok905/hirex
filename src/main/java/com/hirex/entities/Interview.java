@@ -1,5 +1,6 @@
 package com.hirex.entities;
 
+import com.hirex.enums.InterviewerType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -33,7 +34,7 @@ public class Interview {
 
     String status;
 
-    String interviewType;
+    InterviewerType interviewType;
 
     String meetingLink;
 
@@ -41,6 +42,7 @@ public class Interview {
     @JoinColumn(name = "created_by")
     User createdBy;
 
-    @OneToMany(mappedBy = "interview")
-    List<Interviewer> interviewers;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    List<User> interviewer;
 }
