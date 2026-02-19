@@ -39,8 +39,6 @@ public class JobApplication {
      * for a particular resume for a job, we shouldn't add this.
      * instead of storing Resume entity, we should store the resume url.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "resume_id")
     String resumeUrl;
 
     @Enumerated(EnumType.STRING)

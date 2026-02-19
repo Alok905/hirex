@@ -40,5 +40,5 @@ public class Interview {
 
     /// in case of InterviewType HUMAN
     @ManyToMany(fetch = FetchType.LAZY)
-    List<User> interviewer;
+    List<User> interviewers;
 }
