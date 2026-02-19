@@ -1,5 +1,7 @@
 package com.hirex.entities;
 
+import com.hirex.enums.Currency;
+import com.hirex.enums.EmploymentType;
 import com.hirex.enums.JobStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,22 +34,21 @@ public class Job {
     @Column(nullable = false)
     String title;
 
-    @Column(nullable = false, length = 4000)
+    @Column(nullable = false, columnDefinition = "text")
     String description;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     JobStatus status;
 
-    String location;
+//    String location; /// will see later
 
-    String employmentType;
+    @Column(nullable = false)
+    EmploymentType employmentType;
 
-    Long salaryMin;
-
-    Long salaryMax;
-
-    String currency;
+    Long minSalary;
+    Long maxSalary;
+    Currency currency;
 
     @CreationTimestamp
     Instant postedAt;

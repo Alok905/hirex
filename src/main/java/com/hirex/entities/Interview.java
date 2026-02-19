@@ -32,17 +32,13 @@ public class Interview {
     @Column(nullable = false)
     Integer duration;
 
-    String status;
-
+    @Column(nullable = false)
     InterviewerType interviewType;
 
+    @Column(nullable = false)
     String meetingLink;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    User createdBy;
-
-
+    /// in case of InterviewType HUMAN
     @ManyToMany(fetch = FetchType.LAZY)
     List<User> interviewer;
 }

@@ -3,11 +3,10 @@ package com.hirex.enums.roles;
 import com.hirex.enums.Permission;
 import lombok.Getter;
 
-import java.util.EnumSet;
 import java.util.Set;
 
 @Getter  // for "getPermissions()" method
-public enum CompanyRole {
+public enum CompanyMemberRole {
     /**
      * Admin of a specific company only. all these access are specific to the company they belong to
      */
@@ -32,7 +31,7 @@ public enum CompanyRole {
 
     private final Set<Permission> permissions;
 
-    CompanyRole(Set<Permission> permissions) {
+    CompanyMemberRole(Set<Permission> permissions) {
         this.permissions = permissions;
     }
 

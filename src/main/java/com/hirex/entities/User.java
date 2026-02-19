@@ -46,10 +46,7 @@ public class User {
     boolean isActive = true;
 
     @Column(nullable = false)
-    @Builder.Default
-    boolean emailVerified = false;
-
-    Instant lastLoginAt;
+    boolean isVerified = false;
 
     @CreationTimestamp
     Instant createdAt;

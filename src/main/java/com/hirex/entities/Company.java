@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Table(name = "companies")
 @Entity
@@ -30,15 +31,15 @@ public class Company {
     @Column(nullable = false)
     CompanyStatus status;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     String description;
 
+    @Column(nullable = false)
     String industry;
-
-    String location;
 
     String logoUrl;
 
+    @Column(nullable = false)
     String websiteUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,4 +51,8 @@ public class Company {
 
     @UpdateTimestamp
     Instant updatedAt;
+
+    /// we'll implement location later
+//    @OneToMany(mappedBy = "company")
+//    List<CompanyLocation> locations;
 }

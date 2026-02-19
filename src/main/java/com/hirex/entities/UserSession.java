@@ -29,18 +29,10 @@ public class UserSession {
     @NotBlank
     String refreshToken;
 
-    String deviceName;
-
-    String ipAddress;
-
-    String userAgent;
+    String device_id;
 
     @Column(nullable = false)
     Instant expiresAt;
-
-    @Column(nullable = false)
-    @Builder.Default
-    boolean revoked = false;
 
     Instant lastUsedAt;
 
