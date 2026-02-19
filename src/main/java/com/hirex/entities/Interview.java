@@ -1,6 +1,6 @@
 package com.hirex.entities;
 
-import com.hirex.enums.InterviewerType;
+import com.hirex.enums.InterviewType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +22,7 @@ public class Interview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_application_id")
     JobApplication jobApplication;
 
@@ -33,7 +33,8 @@ public class Interview {
     Integer duration;
 
     @Column(nullable = false)
-    InterviewerType interviewType;
+    @Enumerated(EnumType.STRING)
+    InterviewType interviewType;
 
     @Column(nullable = false)
     String meetingLink;

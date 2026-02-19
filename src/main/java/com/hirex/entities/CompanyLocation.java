@@ -15,16 +15,16 @@ import lombok.experimental.FieldDefaults;
 public class CompanyLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
-    private String officeName;
+    String officeName;
 
-    private String city;
-    private String country;
+    String city;
+    String country;
 
 //    @Column(columnDefinition = "geography(Point, 4326)")
 //    private Point location;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Company company;
+    Company company;
 }

@@ -30,6 +30,7 @@ public class Job {
 
     /// no need to write company here; user (jobOwner) already belongs to a company
     /// single source of truth
+    /// BUT READ QUERY MINIMALIZATION IS MORE IMPORTANT THAN PROPER NORMALIZATION OF DATABASE; SO WE MIGHT ADD "COMPANY" HERE AS WELL AND VALIDATE THE SAME IN SERVICE LAYER  (get all the jobs posted on a company)
 
     @Column(nullable = false)
     String title;
@@ -44,6 +45,7 @@ public class Job {
 //    String location; /// will see later
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     EmploymentType employmentType;
 
     Long minSalary;

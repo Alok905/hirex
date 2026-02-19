@@ -33,6 +33,9 @@ public class JobApplication {
     @JoinColumn(name = "candidate_id", nullable = false)
     User candidate;
 
+    /// MIGHT ADD COMPANY HERE AS WELL; WILL VALIDATE IN SERVICE LAYER;
+    /// get all the job applications of a specific company; this kind of queries
+
     /**
      * uploading new resume might cause create complexity.
      * because, here Resume means one entity that is being there in database.
