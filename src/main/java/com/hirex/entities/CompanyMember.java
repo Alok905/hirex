@@ -1,9 +1,12 @@
 package com.hirex.entities;
 
-import com.hirex.enums.CompanyMemberRole;
+import com.hirex.enums.roles.CompanyMemberRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @Table(
         name = "company_members",
@@ -34,4 +37,12 @@ public class CompanyMember {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     CompanyMemberRole memberRole;
+
+    @CreationTimestamp
+    Instant joinedAt;
+
+//    /// we can store the inviter for admin role; will see later
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "invited_by")
+//    User invitedBy;
 }

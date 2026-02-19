@@ -53,7 +53,7 @@ public class Resume {
      * </resume>
      */
     @Column(nullable = false)
-    boolean parsed;
+    Boolean isParsed;
 
     @CreationTimestamp
     Instant uploadedAt;

@@ -1,4 +1,4 @@
-package com.hirex.hirex;
+package com.hirex;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

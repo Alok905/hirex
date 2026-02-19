@@ -4,6 +4,11 @@ import com.hirex.enums.CompanyStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
+import java.util.List;
 
 @Table(name = "companies")
 @Entity
@@ -26,6 +31,28 @@ public class Company {
     @Column(nullable = false)
     CompanyStatus status;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     String description;
+
+    @Column(nullable = false)
+    String industry;
+
+    String logoUrl;
+
+    @Column(nullable = false)
+    String websiteUrl;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by")
+    User createdBy;
+
+    @CreationTimestamp
+    Instant createdAt;
+
+    @UpdateTimestamp
+    Instant updatedAt;
+
+    /// we'll implement location later
+//    @OneToMany(mappedBy = "company")
+//    List<CompanyLocation> locations;
 }

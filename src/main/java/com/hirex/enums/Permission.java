@@ -2,13 +2,15 @@ package com.hirex.enums;
 
 public enum Permission {
 
-//    USER_VIEW not required; anyone can see other's profile to know about them
     USER_UPDATE,
     USER_DELETE,
-    USER_ROLE_UPDATE, /// employee -> company admin
+    USER_APP_ROLE_UPDATE,
+
+    /// COMPANY ADMIN
+    USER_COMPANY_ROLE_UPDATE,
 
     COMPANY_CREATE,
-    COMPANY_UPDATE,   /// it also includes assign admins
+    COMPANY_UPDATE,
     COMPANY_VIEW,
     COMPANY_DELETE,
 

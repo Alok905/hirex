@@ -1,3 +1,20 @@
 spring:
   application:
     name: hirex
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:3500/pgvector-test
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    com:
+      hirex: TRACE

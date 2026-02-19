@@ -1,5 +1,6 @@
 package com.hirex.entities;
 
+import com.hirex.enums.InterviewerType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -31,6 +32,13 @@ public class Interview {
     @Column(nullable = false)
     Integer duration;
 
-    @OneToMany(mappedBy = "interview")
-    List<Interviewer> interviewers;
+    @Column(nullable = false)
+    InterviewerType interviewType;
+
+    @Column(nullable = false)
+    String meetingLink;
+
+    /// in case of InterviewType HUMAN
+    @ManyToMany(fetch = FetchType.LAZY)
+    List<User> interviewer;
 }

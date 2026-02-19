@@ -29,7 +29,14 @@ public class UserSession {
     @NotBlank
     String refreshToken;
 
-    @CreationTimestamp
+    String device_id;
+
+    @Column(nullable = false)
+    Instant expiresAt;
+
     Instant lastUsedAt;
+
+    @CreationTimestamp
+    Instant createdAt;
 }
 

@@ -1,6 +1,6 @@
 package com.hirex.entities;
 
-import com.hirex.enums.Role;
+import com.hirex.enums.roles.AppRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Table(name = "users")
 @Entity
@@ -36,7 +37,16 @@ public class User {
     String password;
 
     @Enumerated(EnumType.STRING)
-    Role role;
+    AppRole role;
+
+    String profileImageUrl;
+
+    @Column(nullable = false)
+    @Builder.Default
+    boolean isActive = true;
+
+    @Column(nullable = false)
+    boolean isVerified = false;
 
     @CreationTimestamp
     Instant createdAt;
@@ -45,6 +55,4 @@ public class User {
     Instant updatedAt;
 
     Instant deletedAt; /// to soft-delete the user
-
 }
-
